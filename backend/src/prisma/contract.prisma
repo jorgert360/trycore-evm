@@ -1,0 +1,20 @@
+// use prisma-next
+
+model Project {
+  id          Int        @id @default(autoincrement())
+  name        String
+  description String?
+  activities  Activity[]
+}
+
+model Activity {
+  id              Int     @id @default(autoincrement())
+  name            String
+  bac             Float
+  plannedProgress Float
+  actualProgress  Float
+  actualCost      Float
+  projectId       Int
+
+  project Project @relation(fields: [projectId], references: [id])
+}
