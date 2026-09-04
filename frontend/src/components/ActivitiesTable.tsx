@@ -40,6 +40,8 @@ export function ActivitiesTable({
               <th>SV</th>
               <th>CPI</th>
               <th>SPI</th>
+              <th>EAC</th>
+              <th>VAC</th>
               <th>Acciones</th>
             </tr>
           </thead>
@@ -58,6 +60,8 @@ export function ActivitiesTable({
                 <td>{formatNumber(activity.evm.sv)}</td>
                 <td>{formatNumber(activity.evm.cpi)}</td>
                 <td>{formatNumber(activity.evm.spi)}</td>
+                <td>{formatNumber(activity.evm.eac)}</td>
+                <td>{formatNumber(activity.evm.vac)}</td>
 
                 <td>
                   <button
@@ -82,7 +86,7 @@ export function ActivitiesTable({
 
             {activities.length === 0 && (
               <tr>
-                <td colSpan={12}>
+                <td colSpan={14}>
                   No hay actividades registradas.
                 </td>
               </tr>
