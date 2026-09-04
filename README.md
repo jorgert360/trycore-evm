@@ -4,6 +4,10 @@ Aplicación full stack para gestión de proyectos y actividades utilizando Earne
 
 El sistema permite registrar proyectos, administrar actividades, calcular automáticamente indicadores EVM por actividad y obtener métricas consolidadas por proyecto.
 
+responder:
+1. cuánto trabajo debería haber completado 
+2.cuánto trabajo realmente completé comparado con lo que gasto
+
 ## Tecnologías
 
 ### Backend
@@ -348,13 +352,34 @@ Ejecutar:
 
 npm run test:cov
 
-El servicio principal de cálculo EVM alcanzó:
+La capa principal de servicios de negocio alcanzó:
 
+ActivitiesService
+Statements : 100%
+Branches   : 93.75%
+Functions  : 100%
+Lines      : 100%
+
+ProjectsService
+Statements : 100%
+Branches   : 90.90%
+Functions  : 100%
+Lines      : 100%
+
+EvMService
 Statements : 100%
 Branches   : 100%
 Functions  : 100%
 Lines      : 100%
-Tests de integración
+
+Resultado de pruebas unitarias:
+Test Suites: 4 passed
+Tests:       30 passed
+
+Estos resultados corresponden a la capa principal de lógica de negocio.
+La cobertura global también incluye controllers, DTOs, módulos y archivos
+de bootstrap que no forman parte directamente de la lógica de negocio.
+
 
 Ejecutar:
 

@@ -41,29 +41,55 @@ Una regla que mantuve durante la prueba fue no considerar correcta una respuesta
 
 La evidencia final siempre debía venir del código ejecutándose.
 
-2. Herramienta de IA utilizada
-ChatGPT
+## 2. Herramienta de IA utilizada
+
+### ChatGPT
 
 ChatGPT fue la herramienta principal utilizada durante el desarrollo.
 
 Lo utilicé para:
 
-interpretar algunos requisitos de la prueba;
-organizar el orden de implementación;
-resolver errores de NestJS y TypeScript;
-revisar problemas de Prisma;
-apoyar la integración con PostgreSQL;
-revisar CRUD de proyectos y actividades;
-revisar la implementación de EVM;
-analizar casos límite;
-estructurar pruebas unitarias;
-estructurar pruebas E2E;
-apoyar la integración React / NestJS;
-revisar Gitflow;
-agregar Swagger;
-preparar README y documentación técnica.
+- interpretar algunos requisitos de la prueba;
+- organizar el orden de implementación;
+- resolver errores de NestJS y TypeScript;
+- revisar problemas de Prisma;
+- apoyar la integración con PostgreSQL;
+- revisar CRUD de proyectos y actividades;
+- revisar la implementación de EVM;
+- analizar casos límite;
+- estructurar pruebas unitarias;
+- estructurar pruebas E2E;
+- apoyar la integración React / NestJS;
+- revisar Gitflow;
+- agregar Swagger;
+- preparar README y documentación técnica.
 
-No incluyo como herramientas utilizadas aquellas que no formaron parte realmente del proceso.
+### Engram
+
+Utilicé Engram como apoyo para mantener memoria y continuidad de contexto durante el trabajo asistido por IA.
+
+Su función dentro de mi flujo no fue ejecutar la aplicación EVM ni reemplazar las pruebas, sino conservar información relevante del proceso, como decisiones, avances, contexto técnico y problemas ya resueltos.
+
+Esto me permitió trabajar con la IA de forma más continua, evitando tratar cada interacción como una consulta completamente aislada.
+
+Mi flujo de trabajo puede resumirse así:
+
+```text
+Proyecto
+   ↓
+Contexto y decisiones
+   ↓
+Engram
+   ↓
+Asistente de IA
+   ↓
+Propuesta técnica
+   ↓
+Validación humana
+   ↓
+Código + pruebas
+
+Este enfoque me permitió trabajar con un esquema de memoria + razonamiento + validación, que considero más cercano a un flujo real de ingeniería con asistentes de IA que a una interacción aislada basada únicamente en prompts.
 
 3. Sobre los prompts registrados
 
@@ -457,6 +483,113 @@ La propuesta final fue no inventar prompts nuevos.
 En lugar de cambiar su texto, decidí explicar el problema técnico que existía en ese momento y qué hice con la respuesta obtenida.
 
 Para mí esto representa mejor el uso real de IA.
+
+---
+
+## Prompt 015
+
+**Herramienta:** ChatGPT
+
+**Etapa:** Definición de estrategia para documentación de IA.
+
+### Prompt original
+
+> ok, estoy de acuerdo con esa porpuesta procedamos a continuar
+
+### Contexto técnico
+
+Después de revisar cómo presentar los prompts decidí mantener los mensajes originales y complementar cada uno con contexto, objetivo, decisión y validación.
+
+### Decisión
+
+Preferí una documentación transparente en lugar de reconstruir retrospectivamente prompts más técnicos de los que realmente había escrito.
+
+---
+
+## Prompt 016
+
+**Herramienta:** ChatGPT
+
+**Etapa:** Revisión de cumplimiento antes de entrega.
+
+### Prompt original
+
+> perfecto entonces que mas falta del proyecto o que mas se necesita para avanzar
+
+### Contexto técnico
+
+El backend, frontend, Swagger y cálculos EVM ya estaban funcionando.
+
+Quería utilizar la IA para realizar un análisis de brechas contra los requisitos de la prueba antes de considerar terminada la solución.
+
+### Qué aportó la IA
+
+Se identificaron como pendientes principales:
+
+- completar `AI_PROCESS.md`;
+- finalizar `README.md`;
+- crear un script de inicialización de base de datos;
+- revisar EAC y VAC en frontend;
+- ejecutar build, lint, unit tests y E2E;
+- completar el flujo `release/* → main`.
+
+### Resultado
+
+En vez de continuar agregando funcionalidades, cambié el enfoque hacia validación y cumplimiento de requisitos.
+
+---
+
+## Prompt 017
+
+**Herramienta:** ChatGPT
+
+**Etapa:** Documentación del proceso asistido por IA.
+
+### Prompt original
+
+> ok entonces entregamelo listo para yo copiar y pegar
+
+### Contexto técnico
+
+Habíamos definido la estructura que debía tener `AI_PROCESS.md` y necesitaba consolidarla para revisar el proceso completo.
+
+### Decisión
+
+Solicité el documento completo para disminuir errores producidos al ensamblar manualmente varias secciones.
+
+Después continué revisándolo y corrigiendo datos que habían cambiado durante las validaciones finales.
+
+---
+
+Durante la etapa final hubo varias interacciones en las que no envié una pregunta textual nueva, sino que compartí directamente código, resultados de terminal o evidencias para continuar el diagnóstico.
+
+No las registro artificialmente como prompts porque principalmente consistieron en información técnica enviada al asistente.
+
+Entre estas evidencias estuvieron:
+
+- ejecución de `npm run db:init`;
+- resultado de `prisma contract emit`;
+- resultado de `prisma db init`;
+- contenido de `ActivitiesTable.tsx`;
+- resultado de `npm run build` del frontend;
+- resultado de `npm run lint`;
+- resultados de `npm test`;
+- resultados de `npm run test:cov`;
+- resultados de `npm run test:e2e`;
+- contenido de `ProjectsService`;
+- contenido de `ActivitiesService`;
+- errores de Jest;
+- resultados finales de cobertura.
+
+Estas evidencias hicieron parte del mismo flujo:
+
+```text
+ejecutar
+→ compartir resultado real
+→ analizar
+→ corregir
+→ volver a ejecutar
+
 
 5. Cómo aprendí y validé EVM
 
@@ -893,12 +1026,13 @@ códigos de respuesta.
 
 También probé visualmente la documentación antes de cerrar la funcionalidad.
 
-17. Uso de Gitflow
+## 17. Uso de Gitflow
 
 El trabajo fue separado utilizando ramas de funcionalidad.
 
 Entre ellas:
 
+```text
 feature/project-setup
 feature/project-crud
 feature/activity-crud
@@ -908,21 +1042,25 @@ feature/frontend-dashboard
 feature/api-documentation
 feature/final-documentation
 
-Cada feature fue integrada hacia:
+Cada feature fue integrada hacia develop mediante Pull Request.
 
-develop
-
-mediante Pull Request.
-
-Para la entrega final utilizaré:
+Para la entrega final creé:
 
 release/1.0.0
 
-antes de realizar el merge hacia:
+Esta rama fue integrada mediante Pull Request hacia:
 
 main
 
-Esto evita integrar todo directamente sobre la rama principal.
+Finalmente marqué la versión entregable mediante el tag:
+
+v1.0.0
+
+El flujo final fue:
+
+feature/* → develop → release/1.0.0 → main → v1.0.0
+
+Estos resultados corresponden a la capa principal de servicios de negocio. EvMService alcanzó 100% de cobertura y los servicios de Projects y Activities superaron ampliamente el mínimo de 80% requerido.
 
 18. Cómo utilicé IA durante debugging
 
@@ -1097,20 +1235,3 @@ El criterio fue:
 Si las cinco respuestas eran correctas, entonces consideraba terminada la funcionalidad.
 
 
-Hay una parte importante que dejé deliberadamente transparente: **no inventé prompts técnicos que no quedaron preservados textualmente**. El reto exige que los prompts sean literales; falsearlos para que parezcan mejores sería más riesgoso que mostrar prompts humanos acompañados de una explicación técnica sólida. 
-
-### Ahora haz únicamente esto
-
-1. Abre `AI_PROCESS.md`.
-2. Borra todo el contenido anterior.
-3. Pega el documento de arriba.
-4. Guarda.
-5. Desde la raíz ejecuta:
-
-```bat
-git status
-
-Deberías tener al menos:
-
-modified: AI_PROCESS.md
-modified: README.md
